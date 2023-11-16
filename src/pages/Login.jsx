@@ -13,7 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // checks if tokens are availabel otherwise redirects to login page
+  // checks if token and user cookie are available then redirects to admin page
   useEffect(() => {
     if (Cookies.get("token") && Cookies.get("user")) {
       navigate("/admin");
@@ -44,21 +44,23 @@ const Login = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting, setFieldError }) => {
+              //searches the username in the usercredentials json
               let found = userCredentials.find((item) => item?.username === values?.username);
+
               //checks if username is not found/incorrect
               if (!found) {
                 setFieldError("username", "Incorrect Username, please try again");
                 setSubmitting(false);
                 return;
               }
-              //checks if password is incorrect
+              //checks if username is found and password is incorrect
               if (found && found?.password !== md5(values?.password)) {
                 setFieldError("password", "Incorrect password, please try again");
                 setSubmitting(false);
                 return;
               }
 
-              //checks if username and password are both correct, the saves the token and userdetails in cookie and redux states
+              //checks if username and password are both correct, then saves the token and userdetails in cookie and redux states
               if (found && found?.password === md5(values?.password)) {
                 setSubmitting(false);
                 Cookies.set("token", md5(found?.username + found?.password), { expires: values?.rememberme ? 7 : 1 });
