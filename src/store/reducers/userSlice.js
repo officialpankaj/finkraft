@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// states used for storing user details
 const userSlice = createSlice({
   name: "user",
   initialState: {

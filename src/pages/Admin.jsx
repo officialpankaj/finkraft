@@ -13,6 +13,7 @@ const Admin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // checks if token and user cookie are available otherwise redirects to login page
   useEffect(() => {
     if (Cookies.get("token") && Cookies.get("user")) {
       dispatch(setUserDetails(JSON.parse(Cookies.get("user"))));
