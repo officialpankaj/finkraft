@@ -17,13 +17,8 @@ export default {
       "8xl": ["100px", "104.38px"],
     },
     extend: {
-      fontFamily: {
-        mulish: ["Mulish", "sans-serif"],
-      },
       colors: {
         primary: "#1f2562",
-        secondary: "#FFBF5E",
-        tertiary: "#BEBEBE",
         "slate-gray": "#6D6D6D",
         "white-900": "rgba(255, 255, 255, 0.90)",
         "white-800": "rgba(255, 255, 255, 0.80)",
@@ -35,12 +30,6 @@ export default {
       },
       boxShadow: {
         "3xl": "0 10px 40px rgba(0, 0, 0, 0.1)",
-      },
-      backgroundImage: {
-        "city-bg": "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/images/city-bg.jpg')",
-      },
-      screens: {
-        wide: "1440px",
       },
     },
   },

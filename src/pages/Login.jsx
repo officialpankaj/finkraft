@@ -54,8 +54,8 @@ const Login = () => {
 
               if (found && found?.password === md5(values?.password)) {
                 setSubmitting(false);
-                Cookies.set("token", md5(found?.username + found?.password));
-                Cookies.set("user", JSON.stringify({ username: found?.username, userName: found?.userName, active_module: found?.active_module, role: found?.role }));
+                Cookies.set("token", md5(found?.username + found?.password), { expires: values?.rememberme ? 7 : 1 });
+                Cookies.set("user", JSON.stringify({ username: found?.username, userName: found?.userName, active_module: found?.active_module, role: found?.role }), { expires: values?.rememberme ? 7 : 1 });
                 dispatch(setUserDetails({ username: found?.username, userName: found?.userName, active_module: found?.active_module, role: found?.role }));
                 dispatch(setToken(md5(found?.username + found?.password)));
                 navigate("/admin");
